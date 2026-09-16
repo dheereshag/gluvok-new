@@ -1,12 +1,15 @@
 <!-- intent-skills:start -->
+
 ## Skill Loading
 
 Before editing files for a substantial task:
+
 - Run `pnpm dlx @tanstack/intent@latest list` from the workspace root to see available local skills.
 - If a listed skill matches the task, run `pnpm dlx @tanstack/intent@latest load <package>#<skill>` before changing files.
 - Use the loaded `SKILL.md` guidance while making the change.
 - Monorepos: when working across packages, run the skill check from the workspace root and prefer the local skill for the package being changed.
 - Multiple matches: prefer the most specific local skill for the package or concern you are changing; load additional skills only when the task spans multiple packages or concerns.
+
 <!-- intent-skills:end -->
 
 # AGENTS.md
@@ -83,11 +86,11 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 For any JavaScript / TypeScript / Node modifications:
 
 1. **Package Manager**: Use `pnpm` explicitly for all package installations and script executions. Do not use `npm`, `yarn`, or `bun`.
-2. **Lint & Code Style**: Run `pnpm run lint:fix` (`oxlint --fix`) and `pnpm run fmt:check` (`oxfmt --check`). Fix any remaining issues cleanly without disabling rules.
-3. **Type Checking**: Run `pnpm run type-check` (`tsc --noEmit`). Fix type diagnostics cleanly without using `@ts-ignore` or arbitrary `any`.
+2. **Lint & Code Style**: Run `pnpm lint` and `pnpm fmt`. Fix any remaining issues cleanly without disabling rules.
+3. **Type Checking**: Run `pnpm type-check` (`tsc --noEmit`). Fix type diagnostics cleanly without using `@ts-ignore` or arbitrary `any`.
 4. **Test Suite**: Run `pnpm test` (`vitest run`) to confirm all tests pass without regression.
 5. **Build Verification**: Run `pnpm run build` (`next build`) to confirm production builds compile cleanly.
-6. **Iterative Verification**: Keep looping through `pnpm run lint:fix`, `pnpm run fmt:check`, `pnpm run type-check`, `pnpm test`, and `pnpm run build` until all yield **0 errors, 0 warnings, and clean builds**.
+6. **Iterative Verification**: Keep looping through `pnpm lint`, `pnpm fmt`, `pnpm type-check`, `pnpm test`, and `pnpm run build` until all yield **0 errors, 0 warnings, and clean builds**.
 
 **The mandatory commands that must always pass:**
 
